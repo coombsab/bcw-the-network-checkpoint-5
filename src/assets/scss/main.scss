@@ -1,0 +1,66 @@
+@import "./_variables.scss";
+@import "bootstrap";
+@import "./_overrides.scss";
+@import "./utilities.scss";
+@import "./loaders.scss";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+body{
+  overscroll-behavior: none;
+  font-family: 'Inter', sans-serif;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: $body-bg;
+}
+
+main {
+  flex-grow: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+input,
+textarea,
+select {
+  &:not(:placeholder-shown) {
+    &:valid {
+      border: 1px solid $success;
+    }
+    &:invalid {
+      border: 1px solid $danger;
+    }
+  }
+}
+
+form:invalid button[type="submit"] {
+  filter: grayscale(1);
+  pointer-events: none;
+}
+
+.bg-linear-gradient {
+  background: linear-gradient(0.25turn, #39C4C6, rgba(255, 255, 255, .75) 75%, #7EDACF);
+  background-color: #7EDACF;
+}
+
+
+.bg-theme-primary {
+  background-color: #7EDACF;
+}
+
+.bg-theme-secondary {
+  background-color: #E5E5E5;
+}
+
+.text-shadow{
+  color: aliceblue;
+  text-shadow: 1px 1px black, 0px 0px 5px salmon;
+  font-weight: bold;
+  letter-spacing: 0.08rem
+  /* Second Color  in text-shadow is the blur */
+}
