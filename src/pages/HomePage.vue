@@ -2,6 +2,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-12 order-1 order-md-0" id="posts">
+        <CreatePost v-if="account" :account="account"/>
         <PostCard v-for="p in posts" :key="p.id" :post="p" />
       </div>
       <div class="col-12 p-3 order-0 order-md-1">
@@ -27,6 +28,7 @@ import { onMounted } from "vue"
 import { computed } from "@vue/reactivity"
 import { AppState } from "../AppState.js"
 import PostCard from "../components/PostCard.vue"
+import CreatePost from "../components/CreatePost.vue"
 
 // TODO
 // look into scroll-snap and popover in bootstrap
@@ -50,10 +52,11 @@ export default {
           posts: computed(() => AppState.posts),
           next: computed(() => AppState.nextPage),
           previous: computed(() => AppState.previousPage),
-          page: computed(() => AppState.page)
+          page: computed(() => AppState.page),
+          account: computed(() => AppState.account)
         };
     },
-    components: { PostCard }
+    components: { PostCard, CreatePost }
 }
 </script>
 

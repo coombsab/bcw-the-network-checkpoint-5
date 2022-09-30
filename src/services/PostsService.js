@@ -11,6 +11,12 @@ class PostsService {
     AppState.previousPage = res.data.older
     AppState.page = res.data.page
   }
+
+  async createPost(formData) {
+    console.log("formData", formData)
+    const res = await sandboxApi.post("api/posts", formData)
+    AppState.posts = [new Post(res.data), ...AppState.posts]
+  }
 }
 
 export const postsService = new PostsService()
