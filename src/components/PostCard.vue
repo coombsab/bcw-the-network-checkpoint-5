@@ -2,7 +2,13 @@
   <div class="card my-3 bg-theme-secondary">
     <div class="card-header d-flex gap-2 align-items-center">
       <img :src="post.creator.picture" :alt="post.creator.name" :title="post.creator.name">
-      <p>{{new Date(post.createdAt).toLocaleString()}}</p>
+      <div>
+        <p>{{post.creator.name}}</p>
+        <div class="d-flex gap-2 align-items-center text-less-important">
+          <p>{{getTime()}}</p>
+          <img src="../assets/img/Graduated.png" alt="Grad" class="grad-icon" v-if="post.creator.graduated">
+        </div>
+      </div>
     </div>
     <div class="card-body">
       <p>{{post.body}}</p>
@@ -17,6 +23,7 @@
 </template>
 
 <script>
+import { onMounted } from "vue";
 import { Post } from "../models/Post.js";
 
 export default {
@@ -24,9 +31,23 @@ export default {
     post: { type: Post, required: true }
   },
   setup(props) {
-    
-    return {
+    function getTime() {
+      const today = new Date()
+      const date = new Date(props.post.createdAt)
+      const dayDiff = today.getDate() - date.getDate()
+      const timeDiff = today.getHours() - date.getHours()
+      let time
+      if (dayDiff < 1) {
+        time = timeDiff + "h"
+      } else {
+        time = dayDiff + "d"
+      }
+      // time += " " + date.toDateString() + " " + date.toLocaleTimeString()
       
+      return time
+    }
+    return {
+      getTime
     }
   }
 }
@@ -42,5 +63,10 @@ export default {
     width: 2rem;
     object-position: center;
     border-radius: 50%;
+  }
+
+  .grad-icon {
+    height: 1.25rem;
+    width: 1.25rem;
   }
 </style>

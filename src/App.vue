@@ -18,7 +18,7 @@
           <div class="col-md-9 bg-white pt-3">
             <router-view />
           </div>
-          <div class="col-md-3 pt-3">
+          <div class="col-md-3 pt-3 bg-white">
             <AdCard v-for="a in ads" :ad="a"/>
           </div>
         </div>

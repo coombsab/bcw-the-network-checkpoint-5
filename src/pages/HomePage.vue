@@ -1,12 +1,15 @@
 <template>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 order-1 order-md-0" id="posts">
         <PostCard v-for="p in posts" :key="p.id" :post="p" />
+      </div>
+      <div class="col-12 p-3 order-0 order-md-1">
         <div class="d-flex justify-content-around align-items-center">
           <button class="btn" @click="getPosts(next)" :disabled="!next">
             <h5>&lt Newer</h5>
           </button>
+          <h5>{{page}}</h5>
           <button class="btn" @click="getPosts(previous)" :disabled="!previous">
             <h5>Older &gt</h5>
           </button>
@@ -46,7 +49,8 @@ export default {
           getPosts,
           posts: computed(() => AppState.posts),
           next: computed(() => AppState.nextPage),
-          previous: computed(() => AppState.previousPage)
+          previous: computed(() => AppState.previousPage),
+          page: computed(() => AppState.page)
         };
     },
     components: { PostCard }
@@ -54,5 +58,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+#posts {
+  overflow-y: auto;
+  max-height: 82vh;
+  // TODO maybe try moving scrollbar to the other side at a later point, this mirrors everything in the post too
+  // direction: rtl;
+}
 
+h5 {
+  margin: 0;
+}
 </style>

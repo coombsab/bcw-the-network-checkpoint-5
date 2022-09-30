@@ -64,3 +64,7 @@ form:invalid button[type="submit"] {
   letter-spacing: 0.08rem
   /* Second Color  in text-shadow is the blur */
 }
+
+.text-less-important {
+  color: rgba(66, 66, 66, 0.75);
+}

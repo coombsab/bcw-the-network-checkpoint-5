@@ -1,5 +1,5 @@
 <template>
-  <div class="card mb-3">
+  <div class="card mb-3 elevation-2">
     <img :src="ad.square" :alt="ad.title" :title="ad.title" class="rounded img-fluid">
   </div>  
 </template>
