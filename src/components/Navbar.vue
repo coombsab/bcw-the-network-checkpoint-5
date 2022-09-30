@@ -1,11 +1,12 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-linear-gradient px-3">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
-      <div class="d-flex flex-column align-items-center">
-        <img alt="logo" src="../assets/img/Network.png" height="45" />
-      </div>
-    </router-link>
-    <button
+  <nav class="navbar navbar-expand-lg bg-linear-gradient px-3 d-flex justify-content-between">
+      <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+        <div class="d-flex flex-column align-items-center">
+          <img alt="logo" src="../assets/img/Network.png" height="45" />
+        </div>
+      </router-link>
+      <SearchForm/>
+    <!-- <button
       class="navbar-toggler"
       type="button"
       data-bs-toggle="collapse"
@@ -15,8 +16,9 @@
       aria-label="Toggle navigation"
     >
       <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarText">
+    </button> -->
+
+    <!-- <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarText"> -->
       <!-- <ul class="navbar-nav me-auto">
         <li>
           <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
@@ -26,17 +28,18 @@
       </ul> -->
       <!-- LOGIN COMPONENT HERE -->
       <!-- <Login/> -->
-    </div>
+    <!-- </div> -->
   </nav>
 </template>
 
 <script>
 import Login from './Login.vue'
+import SearchForm from './SearchForm.vue'
 export default {
   setup() {
     return {}
   },
-  components: { Login }
+  components: { Login, SearchForm }
 }
 </script>
 
