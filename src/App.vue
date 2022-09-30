@@ -1,11 +1,5 @@
 <template>
-  <!-- <header>
-    <Navbar />
-  </header>
-  <main>
-    <router-view />
-  </main> -->
-  <div class="container-fluid">
+   <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 pt-3">
         <Login />
@@ -15,7 +9,7 @@
           <div class="col-12 p-0">
             <Navbar class="shadow"/>
           </div>
-          <div class="col-md-9 bg-white pt-3">
+          <div class="col-md-9 bg-white p-0">
             <router-view />
           </div>
           <div class="col-md-3 pt-3 bg-white">

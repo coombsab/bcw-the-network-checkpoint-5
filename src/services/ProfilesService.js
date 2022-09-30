@@ -3,8 +3,8 @@ import { Profile } from "../models/Profile.js"
 import { sandboxApi } from "./AxiosService.js"
 
 class ProfilesService {
-  async getProfileById(profildeId) {
-    const res = sandboxApi.get(`api/profiles/${profileId}`)
+  async getProfileById(profileId) {
+    const res = await sandboxApi.get(`api/profiles/${profileId}`)
     AppState.activeProfile = new Profile(res.data)
   }
 }

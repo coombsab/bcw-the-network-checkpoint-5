@@ -2,7 +2,7 @@
   <div class="card my-3 bg-theme-secondary elevation-2">
     <div class="card-header d-flex justify-content-between">
       <div class="d-flex align-items-center gap-4">
-        <router-link :to="{ name: 'Profile', params: { id: post.id }}">
+        <router-link :to="{ name: 'Profile', params: { id: post.creatorId }}">
           <img :src="post.creator.picture" :alt="post.creator.name" :title="post.creator.name" class="profile-img">
         </router-link>
         <div>

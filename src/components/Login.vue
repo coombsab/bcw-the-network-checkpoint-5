@@ -7,8 +7,18 @@
     >
       Login
     </button>
+    
+    <div class="d-flex justify-content-center picture-container" v-if="account.picture || user.picture">
+      <router-link :to="{ name: 'Account' }">
+        <img :src="account.picture || user.picture" alt="account photo" class="account-picture" title="View Account">
+      </router-link>
+      <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
+    </div>
+    <div class="d-flex flex-column align-items-center mt-5">
+      <h5>{{account.name}}</h5>
+    </div>
 
-    <div class="dropdown my-2 my-lg-0" v-else>
+    <!-- <div class="dropdown my-2 my-lg-0" v-else>
       <div
         class="dropdown-toggle selectable"
         data-bs-toggle="dropdown"
@@ -36,7 +46,7 @@
           logout
         </div>
       </div>
-    </div>
+    </div> -->
   </span>
 </template>
 
@@ -74,5 +84,23 @@ export default {
 
 .hoverable {
   cursor: pointer;
+}
+
+.account-picture {
+  border-radius: 50%;
+  height: 12rem;
+  width: 12rem;
+  margin-top: 4rem;
+}
+
+.picture-container {
+  position: relative;
+}
+.graduated-icon {
+  height: 3.4rem;
+  width: 3.4rem;
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
 }
 </style>

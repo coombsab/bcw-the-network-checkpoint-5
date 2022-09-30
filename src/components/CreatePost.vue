@@ -2,7 +2,9 @@
   <div class="card">
     <div class="d-flex p-3 gap-3">
       <div class="text-center mt-2 fit">
-        <img :src="account.picture" :alt="account.name" :title="account.name">
+        <router-link :to="{ name: 'Profile', params: { id: account.id }}">
+          <img :src="account.picture" :alt="account.name" title="View Profile">
+        </router-link>
       </div>
       <div class="w-100">
         <PostForm />

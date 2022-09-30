@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid" v-if="posts.length > 0">
+  <div class="container-fluid mt-3" v-if="posts.length > 0">
     <div class="row">
       <div class="col-12 order-1 order-md-0" id="posts">
         <CreatePost v-if="account.id" :account="account"/>
