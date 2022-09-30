@@ -6,6 +6,7 @@
     </div>
     <div class="card-body">
       <p>{{post.body}}</p>
+      <img :src="post.imgUrl" alt="Image Not Loading" class="img-fluid rounded">
     </div>
     <div class="card-footer d-flex gap-2 justify-content-end align-items-center">
       <img src="../assets/img/ant-design_heart-outlined.png" alt="Like Icon">
@@ -36,7 +37,7 @@ export default {
     margin: 0;
   }
 
-  img {
+  .card-header>img {
     height: 2rem;
     width: 2rem;
     object-position: center;
