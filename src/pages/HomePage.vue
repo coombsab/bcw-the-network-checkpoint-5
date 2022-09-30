@@ -3,6 +3,14 @@
     <div class="row">
       <div class="col-12">
         <PostCard v-for="p in posts" :key="p.id" :post="p" />
+        <div class="d-flex justify-content-around align-items-center">
+          <button class="btn" @click="getPosts(next)" :disabled="!next">
+            <h5>&lt Newer</h5>
+          </button>
+          <button class="btn" @click="getPosts(previous)" :disabled="!previous">
+            <h5>Older &gt</h5>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -22,9 +30,9 @@ import PostCard from "../components/PostCard.vue"
 
 export default {
     setup() {
-        async function getPosts() {
+        async function getPosts(changePage = "api/posts") {
             try {
-                await postsService.getPosts();
+                await postsService.getPosts(changePage);
             }
             catch (error) {
                 logger.log("[getPosts]", error);
@@ -35,7 +43,10 @@ export default {
             getPosts();
         });
         return {
-            posts: computed(() => AppState.posts)
+          getPosts,
+          posts: computed(() => AppState.posts),
+          next: computed(() => AppState.nextPage),
+          previous: computed(() => AppState.previousPage)
         };
     },
     components: { PostCard }

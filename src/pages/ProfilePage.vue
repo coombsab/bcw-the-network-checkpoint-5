@@ -1,5 +1,5 @@
 <template>
-  
+  This is the profile page
 </template>
 
 <script>
