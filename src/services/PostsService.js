@@ -14,8 +14,6 @@ class PostsService {
       }
     })
     AppState.posts = res.data.posts.map(data => new Post(data))
-    // AppState.nextPage = res.data.newer
-    // AppState.previousPage = res.data.older
     AppState.newer = res.data.newer
     AppState.older = res.data.older
     AppState.page = res.data.page

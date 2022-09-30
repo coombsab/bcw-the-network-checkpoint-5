@@ -3,6 +3,8 @@
     <div class="row">
       <div class="col-12">
         <ProfileDetails :profile="profile" :key="profile.id"/>
+        <!-- <CreatePost class="mt-3" :account="account"/> -->
+        <!-- <PostCard v-for="p in posts" :key="p.id" :post="p"/> -->
       </div>
     </div>
   </div>
@@ -20,6 +22,8 @@ import { profilesService } from "../services/ProfilesService.js"
 import { logger } from "../utils/Logger.js"
 import Pop from "../utils/Pop.js"
 import ProfileDetails from "../components/ProfileDetails.vue"
+import CreatePost from "../components/CreatePost.vue"
+import PostCard from "../components/PostCard.vue"
 
 export default {
     setup() {
@@ -33,14 +37,29 @@ export default {
                 Pop.error(error.message);
             }
         }
+        async function getPostsByProfileId() {
+          try {
+            await profilesService.getPostsByProfileId(route.params.id)
+          }
+          catch(error) {
+            logger.log('[getPostsByProfileId]', error)
+            Pop.error(error.message)
+          }
+        }
         onMounted(() => {
             getProfile();
+            // getPostsByProfileId();
         });
         return {
-            profile: computed(() => AppState.activeProfile)
+            profile: computed(() => AppState.activeProfile),
+            account: computed(() => AppState.account),
+            // posts: computed(() => AppState.posts),
+            // page: computed(() => AppState.page),
+            // newer: computed(() => AppState.newer),
+            // older: computed(() => AppState.older)
         };
     },
-    components: { ProfileDetails }
+    components: { ProfileDetails, CreatePost, PostCard }
 }
 </script>
 
