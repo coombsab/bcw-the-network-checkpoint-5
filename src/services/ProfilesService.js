@@ -25,6 +25,15 @@ class ProfilesService {
     AppState.older = res.data.older
     AppState.page = res.data.page
   }
+
+  async getProfilesByQuery(query) {
+    const res = await sandboxApi.get("api/profiles", {
+      params: {
+        query
+      }
+    })
+    AppState.profiles = res.data.map(data => new Profile(data))
+  }
 }
 
 export const profilesService = new ProfilesService()

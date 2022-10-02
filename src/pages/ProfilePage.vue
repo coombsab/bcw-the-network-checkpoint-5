@@ -1,5 +1,6 @@
 <template>
-  <div class="container-fluid profile" v-if="profile" :style="{ backgroundImage: `url(${profile.coverImg})` }">
+  <!-- <div class="container-fluid profile" v-if="profile" :style="{ backgroundImage: `url(${profile.coverImg})` }"> -->
+  <div class="container-fluid profile" v-if="profile">
     <div class="row">
       <div class="col-12 profile-info">
         <ProfileDetails :profile="profile" :key="profile.id" :account="account"/>
