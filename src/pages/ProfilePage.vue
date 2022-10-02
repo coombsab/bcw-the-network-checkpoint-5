@@ -1,10 +1,21 @@
 <template>
   <div class="container-fluid profile" v-if="profile" :style="{ backgroundImage: `url(${profile.coverImg})` }">
     <div class="row">
-      <div class="col-12">
+      <div class="col-12 profile-info">
         <ProfileDetails :profile="profile" :key="profile.id"/>
-        <!-- <CreatePost class="mt-3" :account="account"/> -->
-        <!-- <PostCard v-for="p in posts" :key="p.id" :post="p"/> -->
+        <CreatePost class="mt-3" :account="profile" v-if="profile.id === account.id"/>
+        <PostCard v-for="p in posts" :key="p.id" :post="p"/>
+      </div>
+      <div class="col-12 p-3 order-0 order-md-1 bg-white">
+        <div class="d-flex justify-content-around align-items-center">
+          <button class="btn" @click="getPostsByProfileId(newer)" :disabled="!newer">
+            <h5>&lt Newer</h5>
+          </button>
+          <h5>{{page}}</h5>
+          <button class="btn" @click="getPostsByProfileId(older)" :disabled="!older">
+            <h5>Older &gt</h5>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -37,26 +48,28 @@ export default {
                 Pop.error(error.message);
             }
         }
-        async function getPostsByProfileId() {
+        async function getPostsByProfileId(changePage) {
           try {
-            await profilesService.getPostsByProfileId(route.params.id)
+            await profilesService.getPostsByProfileId(changePage, route.params.id)
           }
           catch(error) {
             logger.log('[getPostsByProfileId]', error)
             Pop.error(error.message)
           }
         }
+
         onMounted(() => {
             getProfile();
-            // getPostsByProfileId();
+            getPostsByProfileId();
         });
         return {
-            profile: computed(() => AppState.activeProfile),
-            account: computed(() => AppState.account),
-            // posts: computed(() => AppState.posts),
-            // page: computed(() => AppState.page),
-            // newer: computed(() => AppState.newer),
-            // older: computed(() => AppState.older)
+          getPostsByProfileId,
+          profile: computed(() => AppState.activeProfile),
+          account: computed(() => AppState.account),
+          posts: computed(() => AppState.posts),
+          page: computed(() => AppState.page),
+          newer: computed(() => AppState.newer),
+          older: computed(() => AppState.older)
         };
     },
     components: { ProfileDetails, CreatePost, PostCard }
@@ -69,7 +82,12 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    height: 90vh;
+    // height: 90vh;
+    // overflow-y: auto;
+  }
+
+  .profile-info {
+    height: 82vh;
     overflow-y: auto;
   }
 </style>
