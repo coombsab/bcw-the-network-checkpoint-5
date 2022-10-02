@@ -8,7 +8,7 @@
     </div>
     <div class="card-footer">
       {{profile.email}}
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+      <button data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="profile.id === account.id">Edit</button>
     </div>
   </div>
 
