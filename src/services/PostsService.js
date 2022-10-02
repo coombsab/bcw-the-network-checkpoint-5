@@ -5,6 +5,10 @@ import { sandboxApi } from "./AxiosService.js"
 
 class PostsService {
   async getPosts(changePage = "", query = "") {
+    AppState.posts = []
+    AppState.page = null
+    AppState.newer = null
+    AppState.older = null
     if (!changePage) {
       changePage = "api/posts"
     }
@@ -20,6 +24,10 @@ class PostsService {
   }
 
   async getPostsByQuery(query) {
+    AppState.posts = []
+    AppState.page = null
+    AppState.newer = null
+    AppState.older = null
     const res = await sandboxApi.get("api/posts", {
       params: {
         query

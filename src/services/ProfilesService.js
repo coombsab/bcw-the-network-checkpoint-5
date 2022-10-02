@@ -5,11 +5,16 @@ import { sandboxApi } from "./AxiosService.js"
 
 class ProfilesService {
   async getProfileById(profileId) {
+    AppState.activeProfile = null
     const res = await sandboxApi.get(`api/profiles/${profileId}`)
     AppState.activeProfile = new Profile(res.data)
   }
 
   async getPostsByProfileId(changePage = "", profileId) {
+    AppState.posts = []
+    AppState.page = null
+    AppState.newer = null
+    AppState.older = null
     if (!changePage) {
       changePage = `api/profiles/${profileId}/posts`
     }
