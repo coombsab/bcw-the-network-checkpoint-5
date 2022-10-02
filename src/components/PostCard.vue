@@ -8,7 +8,7 @@
         <div>
           <p>{{post.creator.name}}</p>
           <div class="d-flex gap-2 align-items-center text-less-important">
-            <p>{{getTime()}}</p>
+            <p :title="'Created at ' + new Date(post.createdAt)">{{getTime()}}</p>
             <div>
               <img src="../assets/img/Graduated.png" alt="Grad" class="grad-icon" v-if="post.creator.graduated">
             </div>
@@ -56,18 +56,28 @@ export default {
     function getTime() {
       const today = new Date()
       const date = new Date(props.post.createdAt)
-      const dayDiff = today.getDate() - date.getDate()
-      const timeDiff = today.getHours() - date.getHours()
+      let seconds = (today - date) / 1000
+      const days = parseInt ( seconds / 86400 )
+      seconds = seconds % 86400
+      const hours = parseInt( seconds / 3600 )
+      seconds = seconds % 3600
+      const minutes = parseInt( seconds / 60 )
+      seconds = parseInt(seconds % 60)
       let time
-      if (dayDiff < 1) {
-        time = timeDiff + "h"
-      } else {
-        time = dayDiff + "d"
+
+      if (days > 0) {
+        time = days + "d"
+      } else if (hours > 0) {
+        time = hours + "h"
+      } else if (minutes > 0) {
+        time = minutes + "m"
+      } else if (seconds > 0) {
+        time = seconds + "s"
       }
-      // time += " " + date.toDateString() + " " + date.toLocaleTimeString()
-      
+
       return time
     }
+
     return {
       getTime,
       account: computed(() => AppState.account),
