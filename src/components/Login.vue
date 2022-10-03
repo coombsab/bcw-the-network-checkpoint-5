@@ -1,29 +1,36 @@
 <template>
   <span class="navbar-text">
-    <button class="btn selectable text-shadow text-uppercase my-2 my-lg-0" @click="login" v-if="!user.isAuthenticated">
-      Login
-    </button>
-    
-    <div class="d-flex justify-content-center picture-container" v-if="account.picture || user.picture">
-      <router-link :to="{ name: 'Account' }">
-        <!-- <router-link :to="{ name: 'Profile', params: { id: account.id }}"> -->
-        <img :src="account.picture || user.picture" alt="account photo" class="account-picture" title="View Account">
-      </router-link>
-      <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
+    <div v-if="!user.isAuthenticated" class="text-center">
+      <button class="btn selectable text-shadow text-uppercase my-2 my-lg-0" @click="login">
+        Login
+      </button>
     </div>
-    <div class="d-flex flex-column align-items-center mt-5">
-      <!-- <h6 class=""><em>{{account.class}}</em></h6> -->
-      <h5>{{account.name}}</h5>
-      <div class="d-flex justify-content-around align-items-center gap-3 fs-2 mt-3">
-        <a :href="account.github" target="_blank">
-          <i class="mdi mdi-github selectable" :title="account.github"></i>
-        </a>
-        <a :href="account.linkedin" target="_blank">
-          <i class="mdi mdi-linkedin selectable" :title="account.linkedin"></i>
-        </a>
-        <a :href="account.resume" target="_blank">
-          <i class="mdi mdi-note-text selectable" :title="account.resume"></i>
-        </a>
+    <div v-else>
+      <div class="d-flex justify-content-center picture-container" v-if="account.picture || user.picture">
+        <router-link :to="{ name: 'Account' }">
+          <!-- <router-link :to="{ name: 'Profile', params: { id: account.id }}"> -->
+          <img :src="account.picture || user.picture" alt="account photo" class="account-picture" title="View Account">
+        </router-link>
+        <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
+      </div>
+      <div class="d-flex flex-column align-items-center mt-5">
+        <!-- <h6 class=""><em>{{account.class}}</em></h6> -->
+        <h5>{{account.name}}</h5>
+        <div class="d-flex justify-content-around align-items-center gap-3 fs-2 mt-3">
+          <a :href="account.github" target="_blank">
+            <i class="mdi mdi-github selectable" :title="account.github"></i>
+          </a>
+          <a :href="account.linkedin" target="_blank">
+            <i class="mdi mdi-linkedin selectable" :title="account.linkedin"></i>
+          </a>
+          <a :href="account.resume" target="_blank">
+            <i class="mdi mdi-note-text selectable" :title="account.resume"></i>
+          </a>
+        </div>
+        <div class="list-group-item list-group-item-action hoverable text-danger text-center mt-3" @click="logout">
+          <i class="mdi mdi-logout"></i>
+          Logout
+        </div>
       </div>
     </div>
   </span>
