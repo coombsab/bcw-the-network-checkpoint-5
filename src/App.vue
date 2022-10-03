@@ -1,7 +1,7 @@
 <template>
    <div class="container-fluid">
     <div class="row">
-      <div class="col-md-2 pt-3">
+      <div class="col-md-2 pt-md-3">
         <Login class="shadow"/>
       </div>
       <div class="col-md-10">

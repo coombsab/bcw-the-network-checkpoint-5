@@ -76,19 +76,36 @@ export default {
 
   .account-picture {
     border-radius: 50%;
-    height: 12rem;
-    width: 12rem;
-    margin-top: 4rem;
+    height: 6rem;
+    width: 6rem;
+    margin-top: 1rem;
   }
 
   .picture-container {
     position: relative;
   }
   .graduated-icon {
-    height: 3.4rem;
-    width: 3.4rem;
+    height: 2rem;
+    width: 2rem;
     position: absolute;
     right: 2%;
     bottom: 2%;
+  }
+
+  @media (min-width: 768px) {
+    .account-picture {
+      border-radius: 50%;
+      height: 12rem;
+      width: 12rem;
+      margin-top: 4rem;
+    }
+
+    .graduated-icon {
+      height: 3.4rem;
+      width: 3.4rem;
+      position: absolute;
+      right: 2%;
+      bottom: 2%;
+    }
   }
 </style>

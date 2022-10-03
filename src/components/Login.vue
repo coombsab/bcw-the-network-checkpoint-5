@@ -1,7 +1,7 @@
 <template>
   <span class="navbar-text">
     <div v-if="!user.isAuthenticated" class="text-center">
-      <button class="btn selectable text-shadow text-uppercase my-2 my-lg-0" @click="login">
+      <button class="btn selectable text-shadow text-uppercase my-md-2 my-lg-0" @click="login">
         Login
       </button>
     </div>
@@ -13,10 +13,10 @@
         <!-- </router-link> -->
         <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
       </div>
-      <div class="d-flex flex-column align-items-center mt-5">
+      <div class="d-flex flex-column align-items-center mt-md-5 mt-2">
         <!-- <h6 class=""><em>{{account.class}}</em></h6> -->
         <h5>{{account.name}}</h5>
-        <div class="d-flex justify-content-around align-items-center gap-3 fs-2 mt-3">
+        <div class="d-flex justify-content-around align-items-center gap-3 fs-2 mt-md-3">
           <a :href="account.github" target="_blank">
             <i class="mdi mdi-github selectable" :title="account.github"></i>
           </a>
@@ -27,7 +27,7 @@
             <i class="mdi mdi-note-text selectable" :title="account.resume"></i>
           </a>
         </div>
-        <div class="list-group-item list-group-item-action hoverable text-danger text-center mt-3" @click="logout">
+        <div class="list-group-item list-group-item-action hoverable text-danger text-center mt-md-3 pb-2" @click="logout">
           <i class="mdi mdi-logout"></i>
           Logout
         </div>
