@@ -13,6 +13,7 @@
         </div>
       </div>
       <div class="col-12 posts">
+        <ProfileDetails v-for="p in profiles" :key="p.id" :profile="p" :account="p"/>
         <PostCard v-for="p in posts" :key="p.id" :post="p" />
       </div>
       <div class="col-12 p-3">
@@ -40,6 +41,7 @@ import PostCard from "../components/PostCard.vue";
 import { postsService } from "../services/PostsService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
+import ProfileDetails from "../components/ProfileDetails.vue";
 
 export default {
     setup() {
@@ -56,12 +58,13 @@ export default {
           getPosts,
           posts: computed(() => AppState.posts),
           account: computed(() => AppState.account),
+          profiles: computed(() => AppState.profiles),
           newer: computed(() => AppState.newer),
           older: computed(() => AppState.older),
           page: computed(() => AppState.page),
         };
     },
-    components: { PostCard }
+    components: { PostCard, ProfileDetails }
 }
 </script>
 

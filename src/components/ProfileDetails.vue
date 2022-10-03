@@ -1,10 +1,12 @@
 <template>
   <div class="card mt-3 text-shadow elevation-2 bg-img" :style="{ backgroundImage: `url(${profile.coverImg})` }">
     <div class="d-flex justify-content-around align-items-center">
+      <router-link :to="{ name: 'Profile', params: { id: profile.id }}">
       <div class="d-flex justify-content-center picture-container" v-if="profile.picture">
-        <img :src="profile.picture" alt="account photo" class="account-picture" title="View Account">
-        <img src="../assets/img/Graduated.png" alt="" v-if="profile.graduated" class="graduated-icon">
-      </div>
+          <img :src="profile.picture" alt="account photo" class="account-picture" title="View Account">
+          <img src="../assets/img/Graduated.png" alt="" v-if="profile.graduated" class="graduated-icon">
+        </div>
+      </router-link>
       <div class="text-center">
         <p><em>{{profile.class}}</em></p>
         <p>{{profile.name}}</p>

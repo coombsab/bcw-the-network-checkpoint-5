@@ -11,6 +11,7 @@
 import { ref } from "vue";
 import { useRouter } from "vue-router";
 import { postsService } from "../services/PostsService.js";
+import { profilesService } from "../services/ProfilesService.js";
 import { logger } from "../utils/Logger.js";
 import Pop from "../utils/Pop.js";
 
@@ -23,7 +24,7 @@ export default {
       async handleSubmit() {
         try {
           router.push({ name: "Search" }),
-          // await postsService.getPostsByQuery(editable.value.search)
+          await profilesService.getProfilesByQuery(editable.value.search)
           await postsService.getPosts("", editable.value.search)
           editable.value = {}
         }
