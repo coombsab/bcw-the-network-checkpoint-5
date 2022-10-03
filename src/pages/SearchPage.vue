@@ -26,15 +26,28 @@
 import { computed } from "@vue/reactivity";
 import { AppState } from "../AppState.js";
 import PostCard from "../components/PostCard.vue";
+import { postsService } from "../services/PostsService.js";
+import { logger } from "../utils/Logger.js";
+import Pop from "../utils/Pop.js";
 
 export default {
     setup() {
+      async function getPosts(changePage = "api/posts") {
+        try {
+            await postsService.getPosts(changePage);
+        }
+        catch (error) {
+            logger.log("[getPosts]", error);
+            Pop.error(error.message);
+        }
+      }
         return {
-            posts: computed(() => AppState.posts),
-            account: computed(() => AppState.account),
-            newer: computed(() => AppState.newer),
-            older: computed(() => AppState.older),
-            page: computed(() => AppState.page),
+          getPosts,
+          posts: computed(() => AppState.posts),
+          account: computed(() => AppState.account),
+          newer: computed(() => AppState.newer),
+          older: computed(() => AppState.older),
+          page: computed(() => AppState.page),
         };
     },
     components: { PostCard }

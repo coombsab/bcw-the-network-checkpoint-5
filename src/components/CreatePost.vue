@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card elevation-2">
     <div class="d-flex p-3 gap-3">
       <div class="text-center mt-2 fit">
         <router-link :to="{ name: 'Profile', params: { id: account.id }}">

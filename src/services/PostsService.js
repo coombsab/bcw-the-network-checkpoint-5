@@ -40,7 +40,6 @@ class PostsService {
   }
 
   async createPost(formData) {
-    // console.log("formData", formData)
     const res = await sandboxApi.post("api/posts", formData)
     AppState.posts = [new Post(res.data), ...AppState.posts]
   }

@@ -4,6 +4,7 @@ import { sandboxApi } from "./AxiosService.js"
 
 class AdsService {
   async getAds() {
+    AppState.ads = []
     const res = await sandboxApi.get("api/ads")
     AppState.ads = res.data.map(data => new Ad(data))
   }

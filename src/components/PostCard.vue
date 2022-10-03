@@ -84,10 +84,8 @@ export default {
       profile: computed(() => AppState.activeProfile),
       isLiked() {
         if (props.post.likeIds.find(id => id === this.account.id)) {
-          // logger.log(true)
           return true
         } else {
-          // logger.log(false)
           return false
         }
       },

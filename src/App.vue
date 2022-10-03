@@ -2,7 +2,7 @@
    <div class="container-fluid">
     <div class="row">
       <div class="col-md-2 pt-3">
-        <Login />
+        <Login class="shadow"/>
       </div>
       <div class="col-md-10">
         <div class="row">

@@ -15,6 +15,8 @@ class AccountService {
   }
 
   async editAccount(formData) {
+    // Leaving this commented out as it may be worth experimenting with later
+    // AppState.account = []
     const res = await sandboxApi.put("/account", formData)
     AppState.account = new Account(res.data)
   }

@@ -19,7 +19,6 @@ class ProfilesService {
       changePage = `api/profiles/${profileId}/posts`
     }
     const res = await sandboxApi.get(changePage)
-    // console.log(res.data)
     AppState.posts = res.data.posts.map(data => new Post(data))
     AppState.newer = res.data.newer
     AppState.older = res.data.older

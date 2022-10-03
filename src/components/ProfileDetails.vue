@@ -1,5 +1,5 @@
 <template>
-  <div class="card mt-3 text-shadow" :style="{ backgroundImage: `url(${profile.coverImg})` }">
+  <div class="card mt-3 text-shadow elevation-2" :style="{ backgroundImage: `url(${profile.coverImg})` }">
     <div class="d-flex justify-content-around align-items-center">
       <div class="d-flex justify-content-center picture-container" v-if="profile.picture">
         <img :src="profile.picture" alt="account photo" class="account-picture" title="View Account">
