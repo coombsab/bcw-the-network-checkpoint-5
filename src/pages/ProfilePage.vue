@@ -83,8 +83,6 @@ export default {
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    // height: 90vh;
-    // overflow-y: auto;
   }
 
   .profile-info {

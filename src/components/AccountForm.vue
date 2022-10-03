@@ -51,7 +51,6 @@
 </template>
 
 <script>
-import { computed } from "@vue/reactivity";
 import { ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { accountService } from "../services/AccountService.js";
