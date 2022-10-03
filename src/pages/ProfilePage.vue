@@ -1,12 +1,23 @@
 <template>
   <div class="container-fluid profile" v-if="profile">
     <div class="row">
+      <div class="col-12 p-3 bg-white top-pages" v-if="older || newer">
+        <div class="d-flex justify-content-around align-items-center">
+          <button class="btn" @click="getPostsByProfileId(newer)" :disabled="!newer">
+            <h5>&lt Newer</h5>
+          </button>
+          <h5>{{page}}</h5>
+          <button class="btn" @click="getPostsByProfileId(older)" :disabled="!older">
+            <h5>Older &gt</h5>
+          </button>
+        </div>
+      </div>
       <div class="col-12 profile-info">
         <ProfileDetails :profile="profile" :key="profile.id" :account="account"/>
         <CreatePost class="mt-3" :account="profile" v-if="profile.id === account.id"/>
         <PostCard v-for="p in posts" :key="p.id" :post="p"/>
       </div>
-      <div class="col-12 p-3 order-0 order-md-1 bg-white">
+      <div class="col-12 p-3 bg-white">
         <div class="d-flex justify-content-around align-items-center">
           <button class="btn" @click="getPostsByProfileId(newer)" :disabled="!newer">
             <h5>&lt Newer</h5>
@@ -84,8 +95,16 @@ export default {
     background-attachment: fixed;
   }
 
-  .profile-info {
-    height: 82vh;
-    overflow-y: auto;
+  
+
+  @media (min-width: 768px) {
+    .profile-info {
+      height: 82vh;
+      overflow-y: auto;
+    }
+
+    .top-pages {
+      display: none;
+    }
   }
 </style>

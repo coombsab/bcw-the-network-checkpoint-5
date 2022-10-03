@@ -1,11 +1,22 @@
 <template>
   <div class="container-fluid mt-3" v-if="posts.length > 0">
     <div class="row">
-      <div class="col-12 order-1 order-md-0" id="posts">
+      <div class="col-12 p-3 top-pages" v-if="older || newer">
+        <div class="d-flex justify-content-around align-items-center">
+          <button class="btn" @click="getPosts(newer)" :disabled="!newer">
+            <h5>&lt Newer</h5>
+          </button>
+          <h5>{{page}}</h5>
+          <button class="btn" @click="getPosts(older)" :disabled="!older">
+            <h5>Older &gt</h5>
+          </button>
+        </div>
+      </div>
+      <div class="col-12 posts">
         <CreatePost v-if="account.id" :account="account"/>
         <PostCard v-for="p in posts" :key="p.id" :post="p" />
       </div>
-      <div class="col-12 p-3 order-0 order-md-1">
+      <div class="col-12 p-3">
         <div class="d-flex justify-content-around align-items-center">
           <button class="btn" @click="getPosts(newer)" :disabled="!newer">
             <h5>&lt Newer</h5>
@@ -64,14 +75,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#posts {
-  overflow-y: auto;
-  max-height: 82vh;
-  // TODO maybe try moving scrollbar to the other side at a later point, this mirrors everything in the post too
-  // direction: rtl;
-}
+  h5 {
+    margin: 0;
+  }
 
-h5 {
-  margin: 0;
-}
+  @media (min-width: 768px) {
+    .posts {
+      overflow-y: auto;
+      max-height: 82vh;
+    }
+
+    .top-pages {
+      display: none;
+    }
+  }
 </style>
