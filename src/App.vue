@@ -47,7 +47,7 @@ export default {
     })
     return {
       appState: computed(() => AppState),
-      ads: computed(() => AppState.ads)
+      ads: computed(() => AppState.ads),
     }
   },
   components: { Navbar, Login, AdCard }

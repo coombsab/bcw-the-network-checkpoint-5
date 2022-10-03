@@ -17,13 +17,19 @@
     <div class="d-flex justify-content-between align-items-center p-3">
       <div class="d-flex gap-2 align-items-center fs-4">
         <div>
-          <i class="mdi mdi-github selectable" :title="profile.github" v-if="profile.github"></i>
+          <a :href="account.github" target="_blank" class="text-shadow">
+            <i class="mdi mdi-github selectable" :title="profile.github" v-if="profile.github"></i>
+          </a>
         </div>
         <div>
-          <i class="mdi mdi-linkedin selectable" :title="profile.linkedin" v-if="profile.linkedin"></i>
+          <a :href="account.github" target="_blank" class="text-shadow">
+            <i class="mdi mdi-linkedin selectable" :title="profile.linkedin" v-if="profile.linkedin"></i>
+          </a>
         </div>
         <div>
-          <i class="mdi mdi-note-text selectable" :title="profile.resume" v-if="profile.resume"></i>
+          <a :href="account.github" target="_blank" class="text-shadow">
+            <i class="mdi mdi-note-text selectable" :title="profile.resume" v-if="profile.resume"></i>
+          </a>
         </div>
       </div>
       <button class="btn text-shadow" data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="profile.id === account.id">Edit</button>

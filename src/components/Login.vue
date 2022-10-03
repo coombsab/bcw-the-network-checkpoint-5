@@ -15,43 +15,25 @@
       <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
     </div>
     <div class="d-flex flex-column align-items-center mt-5">
+      <h6 class=""><em>{{account.class}}</em></h6>
       <h5>{{account.name}}</h5>
+      <div class="d-flex justify-content-around align-items-center gap-3 fs-2 mt-3">
+        <a :href="account.github" target="_blank">
+          <i class="mdi mdi-github selectable" :title="account.github"></i>
+        </a>
+        <a :href="account.linkedin" target="_blank">
+          <i class="mdi mdi-linkedin selectable" :title="account.linkedin"></i>
+        </a>
+        <a :href="account.resume" target="_blank">
+          <i class="mdi mdi-note-text selectable" :title="account.resume"></i>
+        </a>
+      </div>
     </div>
-
-    <!-- <div class="dropdown my-2 my-lg-0" v-else>
-      <div
-        class="dropdown-toggle selectable"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-        id="authDropdown"
-      >
-        <div v-if="account.picture || user.picture">
-          <img
-            :src="account.picture || user.picture"
-            alt="account photo"
-            height="40"
-            class="rounded"
-          />
-          <span class="mx-3 text-shadow">{{ account.name || user.name }}</span>
-        </div>
-      </div>
-      <div class="dropdown-menu p-0 list-group w-100" aria-labelledby="authDropdown">
-        <router-link :to="{ name: 'Account' }">
-          <div class="list-group-item list-group-item-action hoverable">
-            Manage Account
-          </div>
-        </router-link>
-        <div class="list-group-item list-group-item-action hoverable text-danger" @click="logout">
-          <i class="mdi mdi-logout"></i>
-          logout
-        </div>
-      </div>
-    </div> -->
   </span>
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import { AuthService } from '../services/AuthService'
 export default {
