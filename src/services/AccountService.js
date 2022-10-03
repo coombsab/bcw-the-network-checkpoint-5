@@ -19,6 +19,7 @@ class AccountService {
     // AppState.account = []
     const res = await sandboxApi.put("/account", formData)
     AppState.account = new Account(res.data)
+    AppState.activeProfile =new Profile(res.data)
   }
 }
 

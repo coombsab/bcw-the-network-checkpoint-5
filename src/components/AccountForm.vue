@@ -14,7 +14,7 @@
     </div>
     <div class="form-floating">
       <input type="url" class="form-control" id="floatingPicture" placeholder="Change Picture" v-model="editable.picture">
-      <label for="floatingPicture">Picture</label>
+      <label for="floatingPicture">Picture</label>exampleModalexampleModalexampleModal
     </div>
     <div class="form-floating">
       <input type="url" class="form-control" id="floatingCoverImg" placeholder="Change Cover Image" v-model="editable.coverImg">
@@ -48,6 +48,7 @@
 </template>
 
 <script>
+import { Modal } from "bootstrap";
 import { ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { accountService } from "../services/AccountService.js";
@@ -66,6 +67,8 @@ export default {
       async handleSubmit() {
         try {
           await accountService.editAccount(editable.value)
+          // REVIEW close modal after submit
+          Modal.getOrCreateInstance(document.getElementById('accountModal')).hide()
         }
         catch(error) {
           logger.log('[handleSubmit]', error)

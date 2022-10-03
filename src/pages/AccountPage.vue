@@ -1,20 +1,29 @@
 <template>
   <div class="about text-center">
-    <h1>Welcome {{ account.name }}</h1>
-    <img class="rounded" :src="account.picture" alt="" />
-    <p>{{ account.email }}</p>
+    <!-- <ProfileDetails :account="account" :profile="account"/> -->
   </div>
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
+import ProfileDetails from "../components/ProfileDetails.vue";
+import { Profile } from "../models/Profile.js";
+
 export default {
-  setup() {
-    return {
-      account: computed(() => AppState.account)
-    }
-  }
+    setup() {
+      // function getProfile() {
+      //   AppState.activeProfile = new Profile(AppState.account)
+      // }
+      // onMounted(() => {
+      //   getProfile()
+      // })
+        return {
+            account: computed(() => AppState.account),
+            // profile: computed(() => AppState.activeProfile)
+        };
+    },
+    components: { ProfileDetails }
 }
 </script>
 

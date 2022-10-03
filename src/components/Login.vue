@@ -8,8 +8,8 @@
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center" v-else>
       <div class="picture-container" v-if="account.picture || user.picture">
-        <!-- <router-link :to="{ name: 'Account' }"> -->
-        <router-link :to="{ name: 'Profile', params: { id: account.id }}">
+        <router-link :to="{ name: 'Account' }">
+        <!-- <router-link :to="{ name: 'Profile', params: { id: profile.id }}"> -->
           <img :src="account.picture || user.picture" alt="account photo" class="account-picture" title="View Account">
         </router-link>
         <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
@@ -18,13 +18,13 @@
         <h6 class=""><em>{{account.class}}</em></h6>
         <h5>{{account.name}}</h5>
         <div class="d-flex justify-content-around align-items-center gap-3 fs-2 mt-md-3">
-          <a :href="account.github" target="_blank">
+          <a :href="account.github" target="_blank" v-if="account.github">
             <i class="mdi mdi-github selectable" :title="account.github"></i>
           </a>
-          <a :href="account.linkedin" target="_blank">
+          <a :href="account.linkedin" target="_blank" v-if="account.linkedin">
             <i class="mdi mdi-linkedin selectable" :title="account.linkedin"></i>
           </a>
-          <a :href="account.resume" target="_blank">
+          <a :href="account.resume" target="_blank" v-if="account.resume">
             <i class="mdi mdi-note-text selectable" :title="account.resume"></i>
           </a>
         </div>
@@ -46,6 +46,7 @@ export default {
     return {
       user: computed(() => AppState.user),
       account: computed(() => AppState.account),
+      profile: computed(() => AppState.activeProfile),
       async login() {
         AuthService.loginWithPopup()
       },

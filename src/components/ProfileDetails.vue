@@ -1,6 +1,6 @@
 <template>
   <div class="card mt-3 text-shadow elevation-2 bg-img" :style="{ backgroundImage: `url(${profile.coverImg})` }">
-    <div class="d-flex justify-content-around align-items-center">
+    <div class="d-flex justify-content-around align-items-center profile-info">
       <router-link :to="{ name: 'Profile', params: { id: profile.id }}">
       <div class="d-flex justify-content-center picture-container" v-if="profile.picture">
           <img :src="profile.picture" alt="account photo" class="account-picture" title="View Account">
@@ -34,16 +34,16 @@
           </a>
         </div>
       </div>
-      <button class="btn text-shadow" data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="profile.id === account.id">Edit</button>
+      <button class="btn text-shadow" data-bs-toggle="modal" data-bs-target="#accountModal" v-if="profile.id === account.id">Edit</button>
     </div>
   </div>
 
   <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="accountModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Edit Account</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -61,6 +61,7 @@ import AccountForm from "./AccountForm.vue";
 export default {
     props: {
         profile: { type: Profile, required: true },
+        // profile: { type: Object, required: true },
         account: { type: Object, required: true }
     },
     setup(props) {
@@ -99,7 +100,15 @@ export default {
     bottom: 2%;
   }
 
+  .profile-info {
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+
   @media (min-width: 768px) {
+    .profile-info {
+      flex-direction: row;
+    }
     .account-picture {
       border-radius: 50%;
       height: 12rem;
