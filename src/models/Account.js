@@ -11,6 +11,6 @@ export class Account {
     this.linkedin = data.linkedin
     this.resume = data.resume
     this.graduated = data.graduated
-    this.cass = data.class
+    this.class = data.class
   }
 }

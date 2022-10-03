@@ -4,6 +4,7 @@
       <button class="btn selectable text-shadow text-uppercase my-md-2 my-lg-0" @click="login">
         Login
       </button>
+    <img src="../assets/img/undraw_Dog_re_is6r.png" alt="" class="img-fluid mt-3 rounded">
     </div>
     <div class="d-flex flex-column justify-content-center align-items-center" v-else>
       <div class="picture-container" v-if="account.picture || user.picture">
@@ -14,7 +15,7 @@
         <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
       </div>
       <div class="d-flex flex-column align-items-center mt-md-5 mt-2">
-        <!-- <h6 class=""><em>{{account.class}}</em></h6> -->
+        <h6 class=""><em>{{account.class}}</em></h6>
         <h5>{{account.name}}</h5>
         <div class="d-flex justify-content-around align-items-center gap-3 fs-2 mt-md-3">
           <a :href="account.github" target="_blank">
