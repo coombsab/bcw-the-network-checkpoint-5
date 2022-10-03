@@ -1,14 +1,32 @@
 <template>
-  <div class="card mt-3">
-    <div class="card-header">
-      {{profile.name}}
+  <div class="card mt-3 text-shadow" :style="{ backgroundImage: `url(${profile.coverImg})` }">
+    <div class="d-flex justify-content-around align-items-center">
+      <div class="d-flex justify-content-center picture-container" v-if="profile.picture">
+        <img :src="profile.picture" alt="account photo" class="account-picture" title="View Account">
+        <img src="../assets/img/Graduated.png" alt="" v-if="profile.graduated" class="graduated-icon">
+      </div>
+      <div class="text-center">
+        <p><em>{{profile.class}}</em></p>
+        <p>{{profile.name}}</p>
+        <p>{{profile.email}}</p>
+      </div>
     </div>
-    <div class="card-body">
-      {{profile.body}}
-    </div>
-    <div class="card-footer">
-      {{profile.email}}
-      <button data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="profile.id === account.id">Edit</button>
+    <div class="p-3 text-center">
+      <p>{{profile.bio}}</p>
+    </div>    
+    <div class="d-flex justify-content-between align-items-center p-3">
+      <div class="d-flex gap-2 align-items-center fs-4">
+        <div>
+          <i class="mdi mdi-github selectable" :title="profile.github" v-if="profile.github"></i>
+        </div>
+        <div>
+          <i class="mdi mdi-linkedin selectable" :title="profile.linkedin" v-if="profile.linkedin"></i>
+        </div>
+        <div>
+          <i class="mdi mdi-note-text selectable" :title="profile.resume" v-if="profile.resume"></i>
+        </div>
+      </div>
+      <button class="btn text-shadow" data-bs-toggle="modal" data-bs-target="#exampleModal" v-if="profile.id === account.id">Edit</button>
     </div>
   </div>
 
@@ -23,34 +41,48 @@
         <div class="modal-body">
           <AccountForm/>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Account } from "../models/Account.js";
 import { Profile } from "../models/Profile.js";
 import AccountForm from "./AccountForm.vue";
-
-
 
 export default {
     props: {
         profile: { type: Profile, required: true },
-        account: { type: Account, required: true }
+        account: { type: Object, required: true }
     },
     setup(props) {
-        return {};
+        return {
+        };
     },
     components: { AccountForm }
 }
 </script>
 
 <style scoped lang="scss">
-  
+  p {
+    margin: 0.25rem;
+  }
+
+  .account-picture {
+    border-radius: 50%;
+    height: 12rem;
+    width: 12rem;
+    margin-top: 4rem;
+  }
+
+  .picture-container {
+    position: relative;
+  }
+  .graduated-icon {
+    height: 3.4rem;
+    width: 3.4rem;
+    position: absolute;
+    right: 2%;
+    bottom: 2%;
+  }
 </style>

@@ -1,5 +1,6 @@
 import { AppState } from '../AppState'
 import { Account } from "../models/Account.js"
+import { Profile } from "../models/Profile.js"
 import { logger } from '../utils/Logger'
 import { sandboxApi } from './AxiosService'
 
@@ -14,7 +15,7 @@ class AccountService {
   }
 
   async editAccount(formData) {
-    const res = await sandboxApi.get("/account", formData)
+    const res = await sandboxApi.put("/account", formData)
     AppState.account = new Account(res.data)
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="" class="">
+  <form @submit.prevent="handleSubmit()" class="">
     <div class="form-floating">
       <input type="email" class="form-control" id="floatingEmail" placeholder="name@example.com" v-model="editable.email">
       <label for="floatingEmail">Email Address</label>
@@ -11,6 +11,10 @@
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingBio" placeholder="Change Bio" v-model="editable.bio">
       <label for="floatingBio">Bio</label>
+    </div>
+    <div class="form-floating">
+      <input type="url" class="form-control" id="floatingPicture" placeholder="Change Picture" v-model="editable.picture">
+      <label for="floatingPicture">Picture</label>
     </div>
     <div class="form-floating">
       <input type="url" class="form-control" id="floatingCoverImg" placeholder="Change Cover Image" v-model="editable.coverImg">
@@ -29,13 +33,17 @@
       <label for="floatingResume">Resume</label>
     </div>
     <div class="form-floating">
-      <input type="url" class="form-control" id="floatingClass" placeholder="Change Class" v-model="editable.class">
+      <input type="text" class="form-control" id="floatingClass" placeholder="Change Class" v-model="editable.class">
       <label for="floatingClass">Class</label>
     </div>
     <div class="d-flex gap-3 ms-2">
       <label for="graduated">Graduated?</label>
       <input type="checkbox" id="graduated" name="graduated" v-model="editable.graduated">
     </div>
+    <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </div>
   </form>
 
 
@@ -43,6 +51,7 @@
 </template>
 
 <script>
+import { computed } from "@vue/reactivity";
 import { ref, watchEffect } from "vue";
 import { AppState } from "../AppState.js";
 import { accountService } from "../services/AccountService.js";
