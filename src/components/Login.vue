@@ -5,12 +5,12 @@
         Login
       </button>
     </div>
-    <div v-else>
-      <div class="d-flex justify-content-center picture-container" v-if="account.picture || user.picture">
-        <router-link :to="{ name: 'Account' }">
+    <div class="d-flex flex-column justify-content-center align-items-center" v-else>
+      <div class="picture-container" v-if="account.picture || user.picture">
+        <!-- <router-link :to="{ name: 'Account' }"> -->
           <!-- <router-link :to="{ name: 'Profile', params: { id: account.id }}"> -->
           <img :src="account.picture || user.picture" alt="account photo" class="account-picture" title="View Account">
-        </router-link>
+        <!-- </router-link> -->
         <img src="../assets/img/Graduated.png" alt="" v-if="account.graduated" class="graduated-icon">
       </div>
       <div class="d-flex flex-column align-items-center mt-5">
@@ -81,6 +81,7 @@ export default {
 
 .picture-container {
   position: relative;
+  width: fit-content;
 }
 .graduated-icon {
   height: 3.4rem;
